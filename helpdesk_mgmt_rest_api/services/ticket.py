@@ -155,24 +155,17 @@ class TicketService(Component):
 
     def _prepare_params(self, params, mode="create"):
         if mode == "create":
-            if self.env.context.get("authenticated_partner_id"):
-                params["partner_id"] = self.env.context.get("authenticated_partner_id")
-                params.pop("partner", None)
-            elif params.get("partner"):
+            if params.get("partner"):
                 partner = params.pop("partner")
                 params["partner_name"] = partner.pop("name")
-                if partner.get("email"):
-                    try:
-                        params["partner_id"] = (
-                            self.env["res.partner"]
-                            .find_or_create(partner["email"], assert_valid_email=True)
-                            .id
-                        )
-                        params["partner_email"] = partner.pop("email")
-                    except ValueError:
-                        raise UserError(_("The email is not valid"))
-                else:
-                    raise UserError(_("The partner is mandatory"))
+                params["partner_email"] = partner.pop("email")
+
+            elif self.env.context.get("authenticated_partner_id"):
+                params["partner_id"] = self.env.context.get("authenticated_partner_id")
+                params.pop("partner", None)
+            else:
+                raise UserError(_("The partner is mandatory"))
+
         for key in ["category", "team"]:
             if key in params:
                 val = params.pop(key)
