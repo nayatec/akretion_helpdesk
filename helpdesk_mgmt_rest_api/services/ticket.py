@@ -20,6 +20,7 @@ class HelpdeskPartnerInput(Datamodel):
 
     email = fields.Email(required=True, allow_none=False)
     name = fields.String(required=True, allow_none=False)
+    lang = fields.String(required=False, allow_none=False)
 
 
 class HelpdeskTeamInput(Datamodel):
@@ -159,6 +160,8 @@ class TicketService(Component):
                 partner = params.pop("partner")
                 params["partner_name"] = partner.pop("name")
                 params["partner_email"] = partner.pop("email")
+                if "lang" in partner:
+                    params["partner_lang"] = partner.pop("lang")
 
             elif self.env.context.get("authenticated_partner_id"):
                 params["partner_id"] = self.env.context.get("authenticated_partner_id")
