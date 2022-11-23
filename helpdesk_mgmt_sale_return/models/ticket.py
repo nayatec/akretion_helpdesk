@@ -24,36 +24,33 @@ class HelpdeskTicket(models.Model):
             .mapped("picking_id")
             .filtered(lambda m: m.picking_type_id.code == "outgoing")
         ):
-            return_wizard = self.env["stock.return.picking"].create(
-                {
-                    "picking_id": picking.id,
-                    "location_id": picking.location_id.id,
-                    "product_return_moves": self._prepare_return_picking_lines(picking),
-                }
+            return_wizard = (
+                self.env["stock.return.picking"]
+                .with_context(active_id=picking.id, active_model=picking._name)
+                .create({})
             )
+            return_wizard._onchange_picking_id()
+            moves_to_return = (
+                self.mapped("sale_line_ids")
+                .mapped("move_ids")
+                .filtered(lambda m: m.picking_id == picking)
+            )
+            # remove lines we are not returning (added by onchange_picking_id)
+            return_wizard.product_return_moves.filtered(
+                lambda l: l.move_id not in moves_to_return
+            ).unlink()
+            for return_move in return_wizard.product_return_moves:
+                for sale_line in self.sale_line_ids:
+                    if (
+                        return_move.product_id == sale_line.product_id
+                        and return_move.move_id in sale_line.move_ids
+                        and sale_line.qty < return_move.quantity
+                    ):
+                        return_move.quantity = sale_line.qty
+
             res = return_wizard._create_returns()
             self.return_picking_ids |= self.env["stock.picking"].browse(res[0])
         self.stage_id = self.env.ref("helpdesk_mgmt.helpdesk_ticket_stage_awaiting")
-
-    def _prepare_return_picking_lines(self, picking):
-        params = []
-        for line in self.sale_line_ids:
-            for move in line.mapped("move_ids").filtered(
-                lambda m: m.picking_id == picking
-            ):
-                params.append(
-                    (
-                        0,
-                        0,
-                        {
-                            "product_id": move.product_id.id,
-                            "quantity": line.qty,
-                            "move_id": move.id,
-                            "uom_id": move.product_id.uom_id.id,
-                        },
-                    )
-                )
-        return params
 
     def action_view_returns(self):
         """
