@@ -13,9 +13,10 @@
     "depends": [
         "helpdesk_mgmt",
         "product",
+        "stock",
     ],
     "data": [
-        "views/ticket_view.xml",
+        "views/helpdesk_ticket_view.xml",
         "security/ir.model.access.csv",
     ],
 }
