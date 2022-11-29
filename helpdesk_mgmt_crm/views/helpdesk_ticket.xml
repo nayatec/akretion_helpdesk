@@ -1,7 +1,7 @@
 <!-- Copyright (C) 2022 Akretion
      License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
 <odoo>
-    <record id="view_helpdesk_observed_problem" model="ir.ui.view">
+    <record id="view_helpdesk_crm" model="ir.ui.view">
         <field name="model">helpdesk.ticket</field>
         <field name="inherit_id" ref="helpdesk_mgmt.ticket_view_form" />
         <field name="arch" type="xml">
