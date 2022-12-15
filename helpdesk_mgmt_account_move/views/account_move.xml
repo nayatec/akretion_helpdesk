@@ -11,7 +11,7 @@
       <field name="inherit_id" ref="account.view_move_form" />
       <field name="arch" type="xml">
           <!-- Add new buttons -->
-          <xpath expr="//field[@name='journal_id']" position="after">
+          <xpath expr="//div[@name='journal_div']" position="after">
               <field name="helpdesk_ticket_id" string="Ticket" />
           </xpath>
       </field>

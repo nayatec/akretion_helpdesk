@@ -7,17 +7,23 @@ from odoo import api, fields, models
 class HelpdeskTicket(models.Model):
     _inherit = "helpdesk.ticket"
 
+
+    account_move_ids = fields.One2many(
+        string="Account move",
+        comodel_name="account.move",
+        inverse_name="helpdesk_ticket_id",
+        help="Linked account move to the current Ticket",
+    )
     account_move_out_ids = fields.One2many(
         string="Client invoice",
         comodel_name="account.move",
-        inverse_name="helpdesk_ticket_id",
+        compute="_compute_account_move_count",
         help="Linked Client invoice to the current Ticket",
-        domain="[('move_type', 'in', ('out_invoice','out_refund'))]",
     )
     account_move_in_ids = fields.One2many(
         string="Supplier invoice",
         comodel_name="account.move",
-        inverse_name="helpdesk_ticket_id",
+        compute="_compute_account_move_count",
         help="Linked Supplier invoice to the current Ticket",
         domain="[('move_type', 'in', ('in_invoice','in_refund'))]",
     )
@@ -31,6 +37,8 @@ class HelpdeskTicket(models.Model):
     @api.depends("account_move_out_ids", "account_move_in_ids")
     def _compute_account_move_count(self):
         for rec in self:
+            rec.account_move_out_ids = rec.account_move_ids.filtered(lambda i: i.move_type in ('out_invoice', 'out_refund'))
+            rec.account_move_in_ids = rec.account_move_ids.filtered(lambda i: i.move_type in ('in_invoice', 'in_refund'))
             rec.account_move_out_count = len(rec.account_move_out_ids)
             rec.account_move_in_count = len(rec.account_move_in_ids)
 
@@ -38,11 +46,13 @@ class HelpdeskTicket(models.Model):
         action = self.env["ir.actions.actions"]._for_xml_id(
             "account.action_move_out_invoice_type"
         )
-        action["domain"] = [("id", "in", self.account_move_out_ids.ids)]
+        action["domain"] = [("id", "in", self.account_move_out_ids.ids),
+                            ('move_type', 'in', ('out_invoice', 'out_refund'))]
         action["context"] = {
             "default_helpdesk_ticket_id": self.id,
+            'default_move_type': 'out_invoice',
         }
-        if len(self.account_move_ids) == 1:
+        if len(self.account_move_out_ids) == 1:
             action["views"] = [(self.env.ref("account.view_move_form").id, "form")]
             action["res_id"] = self.account_move_out_ids.id
         return action
@@ -51,11 +61,13 @@ class HelpdeskTicket(models.Model):
         action = self.env["ir.actions.actions"]._for_xml_id(
             "account.action_move_in_invoice_type"
         )
-        action["domain"] = [("id", "in", self.account_move_in_ids.ids)]
+        action["domain"] = [("id", "in", self.account_move_in_ids.ids),
+                            ('move_type', 'in', ('in_invoice', 'in_refund'))]
         action["context"] = {
             "default_helpdesk_ticket_id": self.id,
+            'default_move_type': 'in_invoice',
         }
-        if len(self.account_move_ids) == 1:
+        if len(self.account_move_in_ids) == 1:
             action["views"] = [(self.env.ref("account.view_move_form").id, "form")]
             action["res_id"] = self.account_move_in_ids.id
         return action
