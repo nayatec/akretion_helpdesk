@@ -11,13 +11,25 @@
                 <button
                     class="oe_stat_button"
                     type="object"
-                    name="action_view_stock_picking"
+                    name="action_view_stock_picking_out"
                     icon="fa-pencil-square-o"
                 >
                     <field
-                        name="stock_picking_count"
+                        name="stock_picking_out_count"
                         widget="statinfo"
-                        string="Stock Picking"
+                        string="Stock Picking out"
+                    />
+                </button>
+                <button
+                    class="oe_stat_button"
+                    type="object"
+                    name="action_view_stock_picking_in"
+                    icon="fa-pencil-square-o"
+                >
+                    <field
+                        name="stock_picking_in_count"
+                        widget="statinfo"
+                        string="Stock Picking in"
                     />
                 </button>
             </xpath>
