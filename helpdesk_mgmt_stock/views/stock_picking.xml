@@ -11,7 +11,7 @@
       <field name="inherit_id" ref="stock.view_picking_form" />
       <field name="arch" type="xml">
           <!-- Add new buttons -->
-          <xpath expr="//field[@name='origin']" position="after">
+          <xpath expr="//label[@for='scheduled_date']" position="before">
               <field name="helpdesk_ticket_id" string="Ticket" />
           </xpath>
       </field>

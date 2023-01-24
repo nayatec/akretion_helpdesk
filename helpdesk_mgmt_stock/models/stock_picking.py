@@ -8,5 +8,7 @@ class StockPicking(models.Model):
     _inherit = "stock.picking"
 
     helpdesk_ticket_id = fields.Many2one(
-        string="Tickets", comodel_name="helpdesk.ticket"
+        string="Tickets",
+        comodel_name="helpdesk.ticket",
+        groups="helpdesk_mgmt.group_helpdesk_user_own",
     )
