@@ -12,6 +12,7 @@ class CrmLead(models.Model):
         comodel_name="helpdesk.ticket",
         inverse_name="lead_id",
         help="Linked Helpdesk Tickets to the current Lead",
+        groups="helpdesk_mgmt.group_helpdesk_user_own",
     )
     helpdesk_ticket_count = fields.Integer(
         "Tickets number", compute="_compute_helpdesk_ticket_count"
