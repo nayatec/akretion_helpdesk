@@ -24,7 +24,6 @@ class HelpdeskTicket(models.Model):
         comodel_name="stock.picking",
         compute="_compute_stock_picking_count",
         help="Linked Stock Picking in to the current Ticket",
-        domain="[('picking_type', 'in', ('in_invoice','in_refund'))]",
     )
     stock_picking_out_count = fields.Integer(
         "Stock Picking out number", compute="_compute_stock_picking_count"
@@ -42,7 +41,7 @@ class HelpdeskTicket(models.Model):
                 lambda l: l.picking_type_id.code == "outgoing"
             )
             rec.stock_picking_in_ids = rec.stock_picking_ids.filtered(
-                lambda l: l.picking_type_id.code == "incomming"
+                lambda l: l.picking_type_id.code == "incoming"
             )
             rec.stock_picking_out_count = len(rec.stock_picking_out_ids)
             rec.stock_picking_in_count = len(rec.stock_picking_in_ids)
