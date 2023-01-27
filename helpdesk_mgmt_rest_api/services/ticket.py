@@ -73,7 +73,7 @@ class TicketService(Component):
         stage_cancelled = self.env.ref("helpdesk_mgmt.helpdesk_ticket_stage_cancelled")
         record = self._get(_id)
         record.stage_id = stage_cancelled
-        return self.env.datamodels["empty.output"].load({})
+        return {}
 
     def _params_to_prepare_by_appending_id(self):
         return ["category", "team"]
