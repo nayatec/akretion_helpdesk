@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- Product Template -->
+
+    <record id="product_template_form_view_ticket_button" model="ir.ui.view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+             <div name="button_box" position="inside">
+                <button name="action_view_ticket_product_line"
+                        type="object"
+                        icon="fa-list-ol"
+                        class="oe_stat_button"
+                        attrs="{'invisible': [('ticket_product_line_count', '=', 0)]}" groups="helpdesk_mgmt.group_helpdesk_user">
+                    <field string="Ticket Product Line" name="ticket_product_line_count" widget="statinfo"/>
+                </button>
+            </div>
+        </field>
+    </record>
+        <!-- Product Product -->
+
+    <record id="product_form_view_ticket_button" model="ir.ui.view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+             <div name="button_box" position="inside">
+                <button name="action_view_ticket_product_line"
+                        type="object"
+                        icon="fa-list-ol"
+                        class="oe_stat_button"
+                        attrs="{'invisible': [('ticket_product_line_count', '=', 0)]}" groups="helpdesk_mgmt.group_helpdesk_user">
+                    <field string="Ticket Product Line" name="ticket_product_line_count" widget="statinfo"/>
+                </button>
+            </div>
+        </field>
+    </record>
+
+</odoo>

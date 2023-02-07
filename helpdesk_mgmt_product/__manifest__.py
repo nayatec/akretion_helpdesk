@@ -18,5 +18,7 @@
     "data": [
         "views/helpdesk_ticket_view.xml",
         "security/ir.model.access.csv",
+        "views/ticket_product_line_view.xml",
+        "views/product_view.xml"
     ],
 }
