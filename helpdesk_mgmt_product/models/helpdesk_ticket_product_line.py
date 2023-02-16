@@ -10,12 +10,13 @@ class HelpdeskTicketProductLine(models.Model):
 
     ticket_id = fields.Many2one(
         comodel_name="helpdesk.ticket",
+        ondelete="cascade",
     )
-    product_id = fields.Many2one(comodel_name="product.product")
+    product_id = fields.Many2one(comodel_name="product.product", ondelete="restrict")
     product_tmpl_id = fields.Many2one(comodel_name="product.template", related="product_id.product_tmpl_id",
         readonly=True, store=True)
     product_name = fields.Char(related="product_id.name", readonly=True)
-    product_lot_id = fields.Many2one(comodel_name="stock.production.lot")
+    product_lot_id = fields.Many2one(comodel_name="stock.production.lot", ondelete="restrict")
     product_qty = fields.Float(string="Quantity", digits="Product Unit of Measure")
 
 

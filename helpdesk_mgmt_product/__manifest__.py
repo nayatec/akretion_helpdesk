@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
-    "name": "Helpdesk Sale",
+    "name": "Helpdesk Product",
     "summary": "Manage Product info on an helpdesk ticket",
     "version": "14.0.1.0.0",
     "category": "Helpdesk",
