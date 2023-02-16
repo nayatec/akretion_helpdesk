@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
-    "name": "Sale Crm M2m",
+    "name": "Helpdesk Purchase",
     "summary": """
         Many2many fields on both helpdesk.ticket and purchase.order to related X SO to 1 Ticket
         and X Tickets to 1 SO.""",
