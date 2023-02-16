@@ -1,0 +1,135 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* helpdesk_mgmt_product
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-16 14:05+0000\n"
+"PO-Revision-Date: 2023-02-16 14:05+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket_product_line__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket_product_line__create_date
+msgid "Created on"
+msgstr "Date de la demande"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket__display_name
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket_product_line__display_name
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_product_product__display_name
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_product_template__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model,name:helpdesk_mgmt_product.model_helpdesk_ticket
+msgid "Helpdesk Ticket"
+msgstr "Tickets par Équipe"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket__id
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket_product_line__id
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_product_product__id
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_product_template__id
+msgid "ID"
+msgstr ""
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket____last_update
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket_product_line____last_update
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_product_product____last_update
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_product_template____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket_product_line__write_uid
+msgid "Last Updated by"
+msgstr "Denière modification par"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket_product_line__write_date
+msgid "Last Updated on"
+msgstr "Denière mise à jour le"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model.fields,help:helpdesk_mgmt_product.field_product_product__ticket_product_line_ids
+#: model:ir.model.fields,help:helpdesk_mgmt_product.field_product_template__ticket_product_line_ids
+msgid "Linked Ticket Product Line to the current Product"
+msgstr "Tickets SAV "
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket_product_line__product_name
+msgid "Name"
+msgstr "Nom"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model,name:helpdesk_mgmt_product.model_product_product
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket_product_line__product_id
+msgid "Product"
+msgstr "Article"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket__product_line_ids
+msgid "Product Line"
+msgstr "Produits"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket_product_line__product_lot_id
+msgid "Product Lot"
+msgstr "Lot de produits"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model,name:helpdesk_mgmt_product.model_product_template
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket_product_line__product_tmpl_id
+msgid "Product Template"
+msgstr "Modèle d'article"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model,name:helpdesk_mgmt_product.model_helpdesk_ticket_product_line
+msgid "Product line linked to the helpdesk ticket"
+msgstr "Produit liée au ticket SAV"
+
+#. module: helpdesk_mgmt_product
+#: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_product.ticket_view_form
+msgid "Products"
+msgstr "Produits"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket_product_line__product_qty
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_helpdesk_ticket_product_line__ticket_id
+msgid "Ticket"
+msgstr "Billet"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.actions.act_window,name:helpdesk_mgmt_product.action_helpdesk_ticket_product_line_tree
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_product_product__ticket_product_line_ids
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_product_template__ticket_product_line_ids
+#: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_product.helpdesk_ticket_product_line_form
+#: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_product.helpdesk_ticket_product_line_tree
+#: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_product.product_form_view_ticket_button
+#: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_product.product_template_form_view_ticket_button
+msgid "Ticket Product Line"
+msgstr "Tickets SAV"
+
+#. module: helpdesk_mgmt_product
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_product_product__ticket_product_line_count
+#: model:ir.model.fields,field_description:helpdesk_mgmt_product.field_product_template__ticket_product_line_count
+msgid "Ticket Product number"
+msgstr "Nb de tickets SAV"
