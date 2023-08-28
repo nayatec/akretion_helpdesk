@@ -106,3 +106,12 @@ class HelpdeskTicketAuthenticatedCase(HelpdeskTicketCommonCase):
         message_data = {"body": "Also here is a picture"}
         self.service.dispatch("message_post", ticket.id, params=message_data)
         self.assertEqual(len(ticket.message_ids), 2)  # There is a technical message
+
+    def test_ticket_message(self):
+        data = self.generate_ticket_data()
+        res = self.service.dispatch("create", params=data)
+        ticket = self.env["helpdesk.ticket"].search([("id", "=", res["id"])])
+        self.assert_ticket_ok(ticket)
+        message_data = {"body": "Also here is a picture"}
+        self.service.dispatch("message_post", ticket.id, params=message_data)
+        self.assertEqual(len(ticket.message_ids), 2)  # There is a technical message
