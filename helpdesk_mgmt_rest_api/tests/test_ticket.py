@@ -112,8 +112,8 @@ class HelpdeskTicketAuthenticatedCase(HelpdeskTicketCommonCase):
         res = self.service.dispatch("create", params=data)
         ticket = self.env["helpdesk.ticket"].search([("id", "=", res["id"])])
         self.assert_ticket_ok(ticket)
-        authenticated_partner_id = self.env['res.partner'].browse(
-            self.services_env.collection.env.context['authenticated_partner_id']
+        authenticated_partner_id = self.env["res.partner"].browse(
+            self.services_env.collection.env.context["authenticated_partner_id"]
         )
         self.assertEqual(ticket.partner_id, authenticated_partner_id)
         self.assertEqual(ticket.partner_email, authenticated_partner_id.email)
